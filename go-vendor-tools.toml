@@ -1,0 +1,9 @@
+[archive]
+
+[licensing]
+detector = "askalono"
+
+[[licensing.licenses]]
+path = "vendor/gopkg.in/ini.v1/LICENSE"
+sha256sum = "f6918bd93ffe07f4b2c61b8287c32cb3122e08aed0be50f1c7d0eddc87877a8f"
+expression = "Apache-2.0"

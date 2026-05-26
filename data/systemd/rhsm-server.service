@@ -1,0 +1,18 @@
+[Unit]
+Description=rhsm server
+Documentation=https://github.com/jirihnidek/rhsm-server
+Requires=rhsm-server.socket
+After=rhsm-server.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/rhc/rhsm-server
+StandardOutput=journal
+StandardError=journal
+ReadWritePaths=/run/rhsm
+RuntimeDirectory=rhsm
+RuntimeDirectoryMode=0755
+RuntimeDirectoryPreserve=yes
+
+[Install]
+WantedBy=multi-user.target

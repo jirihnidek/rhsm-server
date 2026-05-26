@@ -1,0 +1,11 @@
+[Unit]
+Description=rhsm server socket
+Documentation=https://github.com/jirihnidek/rhsm-server
+
+[Socket]
+ListenStream=/run/rhsm/com.redhat.rhsm
+FileDescriptorName=varlink
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target
