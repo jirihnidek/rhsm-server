@@ -7,6 +7,12 @@
 *.dll
 *.so
 *.dylib
+rhsm-server
+rhsm-server-*.tar.gz
+rhsm-server-*.tar.bz2
+
+# Go vendor tools
+vendor
 
 # Test binary, built with `go test -c`
 *.test
@@ -28,5 +34,5 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
-# .vscode/
+.idea/
+.vscode/
