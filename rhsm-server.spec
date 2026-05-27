@@ -19,17 +19,22 @@ BuildRequires:  askalono-cli
 %description
 The rhsm-server.service provides RHSM Varlink API for client tools.
 
+# --- begin prep ---
 %prep
 %goprep -A
 %setup -q -T -D -a1 %{forgesetupargs}
+# ---- end prep ----
 
 %generate_buildrequires
 %go_vendor_license_buildrequires -c %{S:2}
 
+# --- begin build ---
 %build
 export GO_LDFLAGS="-X github.com/jirihnidek/rhsm-server/pkg/version.Version=%{version}"
 %gobuild -o %{gobuilddir}/bin/rhsm-server %{goipath}/cmd/rhsm-server
+# ---- end build ----
 
+# --- begin install ---
 %install
 # Licenses
 %go_vendor_license_install -c %{S:2}
@@ -42,22 +47,32 @@ install -m 0644 -vp data/systemd/rhsm-server.service  %{buildroot}%{_unitdir}/
 install -m 0644 -vp data/systemd/rhsm-server.socket   %{buildroot}%{_unitdir}/
 install -m 0755 -vd %{buildroot}%{_prefix}/lib/systemd/system-preset/
 install -m 0644 -vp data/systemd/presets/50-rhsm-server.preset %{buildroot}%{_prefix}/lib/systemd/system-preset/
+# ---- end install ----
 
+# --- begin check ---
 %check
 %go_vendor_license_check -c %{S:2}
 %if 0%{?with_check}
 %gocheck2
 %endif
+# ---- end check ----
 
+# --- begin post ---
 %post
 %systemd_post rhsm-server.socket
+# ---- end post ----
 
+# --- begin preun ---
 %preun
 %systemd_preun rhsm-server.socket rhsm-server.service
+# ---- end preun ----
 
+# --- begin postun ---
 %postun
 %systemd_postun_with_restart rhsm-server.service
+# ---- end postun ----
 
+# --- begin file ---
 %files -f %{go_vendor_license_filelist}
 # Binaries
 %{_libexecdir}/%{name}/rhsm-server
@@ -65,6 +80,7 @@ install -m 0644 -vp data/systemd/presets/50-rhsm-server.preset %{buildroot}%{_pr
 %{_unitdir}/rhsm-server.service
 %{_unitdir}/rhsm-server.socket
 %{_prefix}/lib/systemd/system-preset/50-rhsm-server.preset
+# ---- end files ----
 
 %changelog
 %autochangelog
