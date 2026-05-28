@@ -1,0 +1,1 @@
+VARLINK_SOCKET = "/run/rhsm/com.redhat.rhsm"
