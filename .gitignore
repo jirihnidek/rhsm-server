@@ -14,6 +14,9 @@ rhsm-server-*.tar.bz2
 # Go vendor tools
 vendor
 
+# Python cache file of integration tests
+features/steps/__pycache__/
+
 # Test binary, built with `go test -c`
 *.test
 
