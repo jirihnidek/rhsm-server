@@ -6,7 +6,7 @@ require (
 	github.com/coreos/go-systemd/v22 v22.7.0
 	github.com/emersion/go-varlink v0.1.1-0.20260122150447-9c0e29254dd5
 	github.com/jirihnidek/rhsm2 v0.0.0-20260520095901-f7c8272038dc
-	github.com/urfave/cli/v3 v3.9.0
+	github.com/urfave/cli/v3 v3.10.0
 )
 
 require (
