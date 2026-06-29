@@ -60,14 +60,16 @@ func IsSystemRegistered() (bool, error) {
 	return true, nil
 }
 
-type RhsmBackend struct{}
+// ComRedhatRhsmBackend represents com.redhat.rhsm interface
+type ComRedhatRhsmBackend struct{}
 
-func NewRhsmBackend() *RhsmBackend {
-	return &RhsmBackend{}
+// NewComRedHatRhsmBackend creates a new backend for com.redhat.rhsm Varlink interface
+func NewComRedHatRhsmBackend() *ComRedhatRhsmBackend {
+	return &ComRedhatRhsmBackend{}
 }
 
 // Ping checks the status of the RHSM server.
-func (b *RhsmBackend) Ping(in *rhsmapi.PingIn) (*rhsmapi.PingOut, error) {
+func (b *ComRedhatRhsmBackend) Ping(in *rhsmapi.PingIn) (*rhsmapi.PingOut, error) {
 	slog.Debug("Ping() method called")
 	var rhsmServerStatus *rhsm2.RHSMStatus
 	var err error
@@ -102,7 +104,7 @@ func (b *RhsmBackend) Ping(in *rhsmapi.PingIn) (*rhsmapi.PingOut, error) {
 }
 
 // IsRegistered checks if the system is registered with RHSM.
-func (b *RhsmBackend) IsRegistered(in *rhsmapi.IsRegisteredIn) (*rhsmapi.IsRegisteredOut, error) {
+func (b *ComRedhatRhsmBackend) IsRegistered(in *rhsmapi.IsRegisteredIn) (*rhsmapi.IsRegisteredOut, error) {
 	slog.Debug("IsRegistered() method called")
 	registered, err := IsSystemRegistered()
 	if err != nil {
