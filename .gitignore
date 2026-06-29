@@ -7,7 +7,7 @@
 *.dll
 *.so
 *.dylib
-rhsm-server
+./rhsm-server
 rhsm-server-*.tar.gz
 rhsm-server-*.tar.bz2
 

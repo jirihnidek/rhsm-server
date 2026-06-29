@@ -202,7 +202,7 @@ func getListener() (net.Listener, error) {
 }
 
 func run() error {
-	rhsmBackend := NewRhsmBackend()
+	rhsmBackend := NewComRedHatRhsmBackend()
 	rhsmRegistry := govarlink.NewRegistry(&govarlink.RegistryOptions{
 		Vendor:  "Red Hat",
 		Product: "rhsm",
